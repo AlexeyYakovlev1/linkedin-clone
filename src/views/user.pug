@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="./style.css") 
+        title LinkedIn Clone
+    body
+
+    include ./partials/header.pug
+
+    section.user.container
+        .user__header
+            .user__header-bg
+            .user__header-info
+                .user__header-left
+                    .user__header-left-wrapper
+                        .user__header-photo
+                        .user__header-description
+                            span.user__header-name Alexey Yakovlev
+                            .user__header-down-info
+                                small.user__header-industry IT company
+                                small.user__header-city &nbsp;Kirov, Russia
+                                small.user__header-followers &nbsp;43288 followers
+                    a(href="/").user__header-visit-btn Visit website
+                        img(src="../src/assets/images/to.png", alt="to")
+
+                .user__header-right
+                    .user__header-right-top
+                        img(src="../src/assets/images/done.png", alt="done")
+                        span.user__header-right-status Following
+                        img.user__header-right-settings(src="../src/assets/images/user-settings.png", alt="settings")
+                    .user__header-right-industry
+                        span.user__header-right-industry-info John & 12 other connections work here
+                    .user__header-right-employees
+                        a(href="/") See all 79 employees on LinkedIn
+
+        .user__down-info
+            aside.user__sidebar
+                nav.user__menu
+                    ul.user__menu-list
+                        a(href="/")
+                            li.active Home
+                        a(href="/about")
+                            li About
+                        a(href="/jobs")
+                            li Jobs
+                        a(href="/people")
+                            li People
+                        a(href="/ads")
+                            li(style="border-bottom: none;") Ads
+
+            .user__news
+                .user__news-filter
+                    ul.user__news-filter-list
+                        li.active All
+                        li Images
+                        li Documents
+                        li Videos
+
+                    .user__news-sort
+                        span Sort by:&nbsp;
+                        select.user__news-sort-select
+                            option(value="top") Top
+                            option(value="down") Down
+
+                ul.user__news-list
+                    li.user__news-new-item
+                        .user__news-header
+                            .user__news-user
+                                .user__news-photo
+                                .user__news-info
+                                    span.user__news-name
+                                        strong Alexey Yakovlev
+                                    span.user__news-followers 43288 followers
+                                    .user__news-time
+                                        span 1w
+                                        img(src="../src/assets/images/time.png", alt="time")
+                            img.user__news-setting-img(src="../src/assets/images/user-settings.png", alt="settings")
+
+                        p.user__news-text.
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when.
+
+                        a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank") https://bit.ly/2RANHvl
+
+                        .user__news-image
+                        strong.user__news-additional-text Lorem ipsum
+
+                        .user__news-appreciat
+                            .user__news-appreciat-wrapper
+                                ul.user__news-appreciat-list
+                                    li
+                                        img(src="../src/assets/images/smile-2.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-4.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-3.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-5.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-1.png", alt="")
+
+                                span.user__news-num-smiles 153
+                                span.user__news-comments 57 comments
+
+                            span.user__news-border
+
+                        ul.user__news-move-list
+                            li.user__news-like
+                                img(src="../src/assets/images/like.png", alt="like")
+                                span Like
+                            li.user__news-comment
+                                img(src="../src/assets/images/comment.png", alt="comment")
+                                span Comment
+                            li.user__news-share
+                                img(src="../src/assets/images/share.png", alt="share")
+                                span Share
+
+                    li.user__news-new-item
+                        .user__news-header
+                            .user__news-user
+                                .user__news-photo
+                                .user__news-info
+                                    span.user__news-name
+                                        strong Alexey Yakovlev
+                                    span.user__news-followers 43288 followers
+                                    .user__news-time
+                                        span 1w
+                                        img(src="../src/assets/images/time.png", alt="time")
+                            img.user__news-setting-img(src="../src/assets/images/user-settings.png", alt="settings")
+
+                        p.user__news-text.
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when.
+
+                        a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank") https://bit.ly/2RANHvl
+
+                        .user__news-image
+                        strong.user__news-additional-text Lorem ipsum
+
+                        .user__news-appreciat
+                            .user__news-appreciat-wrapper
+                                ul.user__news-appreciat-list
+                                    li
+                                        img(src="../src/assets/images/smile-2.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-4.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-3.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-5.png", alt="")
+                                    li
+                                        img(src="../src/assets/images/smile-1.png", alt="")
+
+                                span.user__news-num-smiles 153
+                                span.user__news-comments 57 comments
+
+                            span.user__news-border
+
+                        ul.user__news-move-list
+                            li.user__news-like
+                                img(src="../src/assets/images/like.png", alt="like")
+                                span Like
+                            li.user__news-comment
+                                img(src="../src/assets/images/comment.png", alt="comment")
+                                span Comment
+                            li.user__news-share
+                                img(src="../src/assets/images/share.png", alt="share")
+                                span Share
+
+            .user__more
+                ul.user__more-ad-list
+                    li
+                        .user__more-ad-header
+                            span.user__more-ad-title Ad
+                            .user__more-ad-settings
+                                span
+                                span
+                                span
+
+                        .user__more-ad-latest-jobs
+                            span.user__more-ad-title Get the latest jobs and industry news
+                                
+                            .user__more-ad-news
+                                img.user__more-ad-news-img(src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG", alt="new")
+                                img.user__more-ad-person-img(src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg", alt="")
+
+                        .user__more-ad-explore-name
+                            span.user__more-ad-title Name, explore relevant opportunities with 
+                                strong Name
+
+                            button.user__more-ad-follow-btn
+                                a(href="/") Follow
+                ul.user__more-similar-list  
+                    li.user__more-similar-item
+                        span.user__more-similar-title Similar pages
+
+                        ul.user__more-similar-pages-list
+                            li
+                                a.user__more-similar-link-item(href="/")
+                                    .user__more-similar-img
+                                    .user__more-similar-info
+                                        .user__more-similar-description
+                                            span.user__more-similar-name
+                                                strong Name
+                                            span.user__more-similar-industry Industry
+                                    a.user__more-similar-follow-btn(href="/")
+                                        img(src="../src/assets/images/add.png", alt="add")
+                                        span Follow
+
+                            li
+                                a.user__more-similar-link-item(href="/")
+                                    .user__more-similar-img
+                                    .user__more-similar-info
+                                        .user__more-similar-description
+                                            span.user__more-similar-name
+                                                strong Name
+                                            span.user__more-similar-industry Industry
+                                    a.user__more-similar-follow-btn(href="/")
+                                        img(src="../src/assets/images/add.png", alt="add")
+                                        span Follow
+
+                            li
+                                a.user__more-similar-link-item(href="/")
+                                    .user__more-similar-img
+                                    .user__more-similar-info
+                                        .user__more-similar-description
+                                            span.user__more-similar-name
+                                                strong Name
+                                            span.user__more-similar-industry Industry
+                                    a.user__more-similar-follow-btn(href="/")
+                                        img(src="../src/assets/images/add.png", alt="add")
+                                        span Follow
+
+                        button.user__more-similar-show-btn
+                            a(href="/") Show more
+                                img(src="../src/assets/images/open-blue.png", alt="show")
+
+    script(src="./bundle.js")
