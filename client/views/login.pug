@@ -4,9 +4,17 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="styles/login.css")
+        //- favicon
+        link(rel="shortcut icon" href="images/logo.png" type="image/png")
         title #{title}
     body
 
-    img(src="https://www.comeet.com/resources/wp-content/uploads/2019/03/linkedin-logo.png", alt="logo")
+    .login
+        img.login-logo-img(src="https://www.comeet.com/resources/wp-content/uploads/2019/03/linkedin-logo.png", alt="logo")
+        form.login__form(action="/auth/login" method="POST")
+            input(type="email", name="email" placeholder="Email")
+            input(type="password", name="password" placeholder="Password")
 
-    script(src="scripts/script.ts")
+            .login__down
+                a(href="/signup") Signup
+                input(type="submit", value="Login")

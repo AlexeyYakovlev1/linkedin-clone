@@ -7,6 +7,8 @@ const MongoStore = require('connect-mongodb-session')(session);
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
 const homeRoute = require('./routes/home.js');
+const signupRoute = require('./routes/auth.js');
+const profileRoute = require('./routes/profile.js');
 
 // app config
 const app = express();
@@ -38,6 +40,8 @@ app.use(varMiddleware);
 app.use(userMiddleware);
 
 app.use('/', homeRoute);
+app.use('/', signupRoute);
+app.use('/profile', profileRoute);
 
 // connect to mongodb and listenr
 async function start() {

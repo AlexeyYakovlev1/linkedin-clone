@@ -3,7 +3,9 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="styles/style.css") 
+        link(rel="stylesheet", href="/styles/style.css") 
+        //- favicon
+        link(rel="shortcut icon" href="/images/logo.png" type="image/png")
         title LinkedIn Clone
     body
 
@@ -11,11 +13,17 @@ html(lang="en")
 
     section.user.container
         .user__header
-            .user__header-bg
+            if (user.backgroud)
+                .user__header-bg(style="background-image: url(#{user.background});")
+            else
+                .user__header-bg(style="background-color: #0F1518;")
             .user__header-info
                 .user__header-left
                     .user__header-left-wrapper
-                        .user__header-photo
+                        if (user.photo)
+                            .user__header-photo(style="background-image: url(#{user.photo});")
+                        else
+                            .user__header-photo(style="background-color: #0F1518;")
                         .user__header-description
                             span.user__header-name Alexey Yakovlev
                             .user__header-down-info
@@ -23,13 +31,13 @@ html(lang="en")
                                 small.user__header-city &nbsp;Kirov, Russia
                                 small.user__header-followers &nbsp;43288 followers
                     a(href="/").user__header-visit-btn Visit website
-                        img(src="images/to.png", alt="to")
+                        img(src="/images/to.png", alt="to")
 
                 .user__header-right
                     .user__header-right-top
-                        img(src="images/done.png", alt="done")
+                        img(src="/images/done.png", alt="done")
                         span.user__header-right-status Following
-                        img.user__header-right-settings(src="images/user-settings.png", alt="settings")
+                        img.user__header-right-settings(src="/images/user-settings.png", alt="settings")
                     .user__header-right-industry
                         span.user__header-right-industry-info John & 12 other connections work here
                     .user__header-right-employees
@@ -54,7 +62,7 @@ html(lang="en")
                 .user__news-filter
                     ul.user__news-filter-list
                         li.active All
-                        li Images
+                        li /images
                         li Documents
                         li Videos
 
@@ -68,15 +76,18 @@ html(lang="en")
                     li.user__news-new-item
                         .user__news-header
                             .user__news-user
-                                .user__news-photo
+                                if (user.photo)
+                                    .user__news-photo(style="background-image: url(#{user.photo});")
+                                else
+                                    .user__news-photo(style="background-color: #0F1518;")
                                 .user__news-info
                                     span.user__news-name
-                                        strong Alexey Yakovlev
+                                        strong #{user.firstName} #{user.lastName}
                                     span.user__news-followers 43288 followers
                                     .user__news-time
                                         span 1w
-                                        img(src="images/time.png", alt="time")
-                            img.user__news-setting-img(src="images/user-settings.png", alt="settings")
+                                        img(src="/images/time.png", alt="time")
+                            img.user__news-setting-img(src="/images/user-settings.png", alt="settings")
 
                         p.user__news-text.
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -91,15 +102,15 @@ html(lang="en")
                             .user__news-appreciat-wrapper
                                 ul.user__news-appreciat-list
                                     li
-                                        img(src="images/smile-2.png", alt="")
+                                        img(src="/images/smile-2.png", alt="")
                                     li
-                                        img(src="images/smile-4.png", alt="")
+                                        img(src="/images/smile-4.png", alt="")
                                     li
-                                        img(src="images/smile-3.png", alt="")
+                                        img(src="/images/smile-3.png", alt="")
                                     li
-                                        img(src="images/smile-5.png", alt="")
+                                        img(src="/images/smile-5.png", alt="")
                                     li
-                                        img(src="images/smile-1.png", alt="")
+                                        img(src="/images/smile-1.png", alt="")
 
                                 span.user__news-num-smiles 153
                                 span.user__news-comments 57 comments
@@ -108,65 +119,13 @@ html(lang="en")
 
                         ul.user__news-move-list
                             li.user__news-like
-                                img(src="images/like.png", alt="like")
+                                img(src="/images/like.png", alt="like")
                                 span Like
                             li.user__news-comment
-                                img(src="images/comment.png", alt="comment")
+                                img(src="/images/comment.png", alt="comment")
                                 span Comment
                             li.user__news-share
-                                img(src="images/share.png", alt="share")
-                                span Share
-
-                    li.user__news-new-item
-                        .user__news-header
-                            .user__news-user
-                                .user__news-photo
-                                .user__news-info
-                                    span.user__news-name
-                                        strong Alexey Yakovlev
-                                    span.user__news-followers 43288 followers
-                                    .user__news-time
-                                        span 1w
-                                        img(src="images/time.png", alt="time")
-                            img.user__news-setting-img(src="images/user-settings.png", alt="settings")
-
-                        p.user__news-text.
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when.
-
-                        a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank") https://bit.ly/2RANHvl
-
-                        .user__news-image
-                        strong.user__news-additional-text Lorem ipsum
-
-                        .user__news-appreciat
-                            .user__news-appreciat-wrapper
-                                ul.user__news-appreciat-list
-                                    li
-                                        img(src="images/smile-2.png", alt="")
-                                    li
-                                        img(src="images/smile-4.png", alt="")
-                                    li
-                                        img(src="images/smile-3.png", alt="")
-                                    li
-                                        img(src="images/smile-5.png", alt="")
-                                    li
-                                        img(src="images/smile-1.png", alt="")
-
-                                span.user__news-num-smiles 153
-                                span.user__news-comments 57 comments
-
-                            span.user__news-border
-
-                        ul.user__news-move-list
-                            li.user__news-like
-                                img(src="images/like.png", alt="like")
-                                span Like
-                            li.user__news-comment
-                                img(src="images/comment.png", alt="comment")
-                                span Comment
-                            li.user__news-share
-                                img(src="images/share.png", alt="share")
+                                img(src="/images/share.png", alt="share")
                                 span Share
 
             .user__more
@@ -184,7 +143,10 @@ html(lang="en")
                                 
                             .user__more-ad-news
                                 img.user__more-ad-news-img(src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG", alt="new")
-                                img.user__more-ad-person-img(src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg", alt="")
+                                if (user.photo)
+                                    .user__more-ad-person-img(style="background-image: url(#{user.photo});")
+                                else
+                                    .user__more-ad-person-img(style="background-color: #0F1518;")
 
                         .user__more-ad-explore-name
                             span.user__more-ad-title Name, explore relevant opportunities with 
@@ -206,7 +168,7 @@ html(lang="en")
                                                 strong Name
                                             span.user__more-similar-industry Industry
                                     a.user__more-similar-follow-btn(href="/")
-                                        img(src="images/add.png", alt="add")
+                                        img(src="/images/add.png", alt="add")
                                         span Follow
 
                             li
@@ -218,7 +180,7 @@ html(lang="en")
                                                 strong Name
                                             span.user__more-similar-industry Industry
                                     a.user__more-similar-follow-btn(href="/")
-                                        img(src="images/add.png", alt="add")
+                                        img(src="/images/add.png", alt="add")
                                         span Follow
 
                             li
@@ -230,11 +192,11 @@ html(lang="en")
                                                 strong Name
                                             span.user__more-similar-industry Industry
                                     a.user__more-similar-follow-btn(href="/")
-                                        img(src="images/add.png", alt="add")
+                                        img(src="/images/add.png", alt="add")
                                         span Follow
 
                         button.user__more-similar-show-btn
                             a(href="/") Show more
-                                img(src="images/open-blue.png", alt="show")
+                                img(src="/images/open-blue.png", alt="show")
 
-    script(src="scripts/script.ts")
+    script(src="/scripts/script.ts")

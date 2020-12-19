@@ -150,7 +150,6 @@ a {
     .user__header-bg {
       height: 192px;
       width: 100%;
-      background-image: url(https://i.pinimg.com/originals/56/3a/db/563adbeb015fb165c4145a28a6c2e4c8.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -171,7 +170,6 @@ a {
       width: 104px;
       height: 104px;
       border: 3.5px solid #ffffff;
-      background-image: url(https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -479,7 +477,6 @@ a {
   .user__news-photo {
     width: 50px;
     height: 50px;
-    background-image: url(https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }
@@ -613,5 +610,3 @@ a {
       align-items: center; }
       .user__news-move-list li span {
         padding-left: 6px; }
-
-/*# sourceMappingURL=style.css.map */

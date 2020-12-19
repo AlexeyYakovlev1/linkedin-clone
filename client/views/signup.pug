@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="styles/login.css")
+        //- favicon
+        link(rel="shortcut icon" href="images/logo.png" type="image/png")
+        title #{title}
+    body
+
+    .signup
+        img.login-logo-img(src="https://www.comeet.com/resources/wp-content/uploads/2019/03/linkedin-logo.png", alt="logo")
+        
+        form.signup__form(action="/auth/register" method="POST")
+            label(for="firstName") First name
+            input(type="text" name="firstName")
+
+            label(for="lastName") Last name
+            input(type="text" name="lastName")
+
+            label(for="email") Email
+            input(type="email" name="email")
+
+            label(for="password") Password
+            input(type="password" name="password")
+
+            input(type="submit", value="Join now")
+
+            span.signup-or or
+            p.signup-down-text Already on LinkedIn?
+                a(href="/") &nbsp;Sign in
