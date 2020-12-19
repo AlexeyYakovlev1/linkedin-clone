@@ -13,17 +13,26 @@ html(lang="en")
 
     section.user.container
         .user__header
-            if (user.backgroud)
-                .user__header-bg(style="background-image: url(#{user.background});")
+            if (user.background)
+                .user__header-bg(style="background-image: url("+user.background+");")
             else
                 .user__header-bg(style="background-color: #0F1518;")
+            form.user__change-bg.block-hidden(action="/change/bg/"+user._id method="POST")
+                label(for="background") Change background picture
+                input(type="text" name="backgroundUrl" placeholder="Write url picture")
+                input.user__change-submit(type="submit" value="Save")
+
             .user__header-info
                 .user__header-left
                     .user__header-left-wrapper
                         if (user.photo)
-                            .user__header-photo(style="background-image: url(#{user.photo});")
+                            .user__header-photo(style="background-image: url("+user.photo+");")
                         else
                             .user__header-photo(style="background-color: #0F1518;")
+                        form.user__change-picture.block-hidden(action="/change/picture/"+user._id method="POST")
+                            label(for="picture") Change picture
+                            input(type="text" name="pictureUrl" placeholder="Write url picture")
+                            input.user__change-submit(type="submit" value="Save")
                         .user__header-description
                             span.user__header-name #{user.firstName} #{user.lastName}
                             .user__header-down-info
@@ -72,7 +81,7 @@ html(lang="en")
                 .user__news-filter
                     ul.user__news-filter-list
                         li.active All
-                        li /images
+                        li images
                         li Documents
                         li Videos
 
@@ -87,7 +96,7 @@ html(lang="en")
                         .user__news-header
                             .user__news-user
                                 if (user.photo)
-                                    .user__news-photo(style="background-image: url(#{user.photo});")
+                                    .user__news-photo(style="background-image: url("+user.photo+");")
                                 else
                                     .user__news-photo(style="background-color: #0F1518;")
                                 .user__news-info
@@ -154,7 +163,7 @@ html(lang="en")
                             .user__more-ad-news
                                 img.user__more-ad-news-img(src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG", alt="new")
                                 if (user.photo)
-                                    .user__more-ad-person-img(style="background-image: url(#{user.photo});")
+                                    .user__more-ad-person-img(style="background-image: url("+user.photo+");")
                                 else
                                     .user__more-ad-person-img(style="background-color: #0F1518;")
 

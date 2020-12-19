@@ -35,14 +35,15 @@ header.header
                             span.header-messages 19
                             img.header__menu-item-img(src="/images/notifications.png", alt="notifications")
                         span Notifications
-                li
-                    a(href="/profile/:id")
-                        if (user.photo)
-                            .header-user-photo(style="background-image: url(#{user.photo});")
-                        else
-                            .header-user-photo(style="background-color: #0F1518;")
-                        span.img Me
-                            img(src="/images/check.png", alt="check")
+                li.header-me-js
+                    if (user.photo)
+                        .header-user-photo(style="background-image: url("+user.photo+");")
+                    else
+                        .header-user-photo(style="background-color: #0F1518;")
+                    span.img Me
+                        img.header-me-img(src="/images/check.png", alt="check")
+
+                    a.header-logout.block-hidden(href="/auth/logout") Logout
 
         .header__right
             .header__right-work

@@ -1,7 +1,6 @@
 const {Schema, model} = require('mongoose');
 
 const userSchema = new Schema({
-    photo: String,
     firstName: {
         type: String,
         required: true
@@ -18,10 +17,47 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    posts: [],
+    background: String,
+    photo: String,
+    posts: {
+        items: [{
+            author: [{
+                photo: String,
+                firstName: {
+                    type: String,
+                    required: true
+                },
+                lastName: {
+                    type: String,
+                    required: true
+                },
+                followers: {
+                    type: Number,
+                    required: true
+                }
+            }],
+            count: {
+                type: Number,
+                required: true,
+                default: 1
+            },
+            time: {
+                type: Date,
+                ref: new Date().setUTCDate
+            },
+            text: {
+                type: String,
+                required: true
+            },
+            img: String
+        }]
+    },
     company: String,
     city: String,
-    followers: Number
+    followers: {
+        type: Number,
+        default: 0
+    }
 });
 
 module.exports = model('user', userSchema);

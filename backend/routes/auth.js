@@ -3,9 +3,17 @@ const router = Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user.js');
 
+// page
 router.get('/signup', (req, res) => {
     res.render('signup', {
         title: 'Linkedin signup'
+    });
+});
+
+// logout
+router.get('/auth/logout', async(req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
     });
 });
 
@@ -51,6 +59,7 @@ router.post('/auth/login', async(req, res) => {
 
             if (!comparePassword) {
                 console.log('Данные не верны!');
+                res.redirect('/');
             } else {
                 req.session.user = userFind;
                 req.session.auth = true;

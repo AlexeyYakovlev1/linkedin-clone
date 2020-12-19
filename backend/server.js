@@ -9,6 +9,7 @@ const userMiddleware = require('./middleware/user');
 const homeRoute = require('./routes/home.js');
 const signupRoute = require('./routes/auth.js');
 const profileRoute = require('./routes/profile.js');
+const changeRoute = require('./routes/change.js');
 
 // app config
 const app = express();
@@ -42,6 +43,7 @@ app.use(userMiddleware);
 app.use('/', homeRoute);
 app.use('/', signupRoute);
 app.use('/profile', profileRoute);
+app.use('/', changeRoute);
 
 // connect to mongodb and listenr
 async function start() {
