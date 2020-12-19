@@ -4,8 +4,7 @@ const User = require('../models/user.js');
 
 router.get('/:id', async(req, res) => {
     try {
-        const userId = req.query.id;
-        const user = User.findById(userId);
+        const user = await User.findById(req.params.id);
 
         res.render('user', {
             title: `Linkedin ${user.firstName} ${user.lastName}`,

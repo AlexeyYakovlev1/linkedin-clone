@@ -99,7 +99,7 @@ a {
     border: 1px solid #ffffff;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; }
+    background-position: center;}
   .header-messages {
     padding: 0 3.5px;
     background-color: #C12D2E;
@@ -153,7 +153,8 @@ a {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      border-radius: 2px 2px 0 0; }
+      border-radius: 2px 2px 0 0;
+      cursor: pointer; }
     .user__header-info {
       padding: 12px 18px 23px 24px;
       display: flex;
@@ -175,7 +176,8 @@ a {
       background-position: center;
       top: -56px;
       border-radius: 2px;
-      box-shadow: 0 0 7px -1px black; }
+      box-shadow: 0 0 7px -1px black; 
+      cursor: pointer; }
     .user__header-description {
       margin-left: 20px; }
     .user__header-name {

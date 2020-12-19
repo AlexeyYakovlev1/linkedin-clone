@@ -6,7 +6,7 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/style.css") 
         //- favicon
         link(rel="shortcut icon" href="/images/logo.png" type="image/png")
-        title LinkedIn Clone
+        title #{title}
     body
 
     include ./partials/header.pug
@@ -25,13 +25,23 @@ html(lang="en")
                         else
                             .user__header-photo(style="background-color: #0F1518;")
                         .user__header-description
-                            span.user__header-name Alexey Yakovlev
+                            span.user__header-name #{user.firstName} #{user.lastName}
                             .user__header-down-info
-                                small.user__header-industry IT company
-                                small.user__header-city &nbsp;Kirov, Russia
-                                small.user__header-followers &nbsp;43288 followers
-                    a(href="/").user__header-visit-btn Visit website
-                        img(src="/images/to.png", alt="to")
+                                if (user.industry)
+                                    small.user__header-industry #{user.industry}
+                                else
+                                    small.user__header-industry No industry
+                                if (user.city)
+                                    small.user__header-city &nbsp;#{user.city}
+                                else
+                                    small.user__header-city &nbsp;No city
+                                small.user__header-followers &nbsp;#{user.followers} followers
+                    if (user.website)
+                        a(href="#{user.website}").user__header-visit-btn Visit website
+                            img(src="/images/to.png", alt="to")
+                    else
+                        a(href="/").user__header-visit-btn.block-hidden Visit website
+                            img(src="/images/to.png", alt="to")
 
                 .user__header-right
                     .user__header-right-top
@@ -83,7 +93,7 @@ html(lang="en")
                                 .user__news-info
                                     span.user__news-name
                                         strong #{user.firstName} #{user.lastName}
-                                    span.user__news-followers 43288 followers
+                                    span.user__news-followers #{user.followers === 0 ? "0" : user.followers} followers
                                     .user__news-time
                                         span 1w
                                         img(src="/images/time.png", alt="time")
@@ -199,4 +209,4 @@ html(lang="en")
                             a(href="/") Show more
                                 img(src="/images/open-blue.png", alt="show")
 
-    script(src="/scripts/script.ts")
+    script(src="/scripts/script.js")
