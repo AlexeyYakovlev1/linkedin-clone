@@ -93,6 +93,14 @@ html(lang="en")
                             option(value="top") Top
                             option(value="down") Down
 
+                .user__news-create-new
+                    button.user-create-new-btn Create new post
+
+                    form.user__create-new.block-hidden(action="/profile/add/post/"+user._id method="POST")
+                        textarea(name="text", cols="76", rows="10" placeholder="Description this post")
+                        input(type="text" name="img" placeholder="URL your picture")
+                        input(type="submit" value="Posting")
+
                 ul.user__news-list
                     li.user__news-new-item
                         .user__news-header

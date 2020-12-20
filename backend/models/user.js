@@ -21,35 +21,11 @@ const userSchema = new Schema({
     photo: String,
     posts: {
         items: [{
-            author: [{
-                photo: String,
-                firstName: {
-                    type: String,
-                    required: true
-                },
-                lastName: {
-                    type: String,
-                    required: true
-                },
-                followers: {
-                    type: Number,
-                    required: true
-                }
-            }],
             count: {
                 type: Number,
                 required: true,
                 default: 1
-            },
-            time: {
-                type: Date,
-                ref: new Date().setUTCDate
-            },
-            text: {
-                type: String,
-                required: true
-            },
-            img: String
+            }
         }]
     },
     company: {

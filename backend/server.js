@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const Cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
 const varMiddleware = require('./middleware/variables');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, '../client/views')));
 app.use(express.static(path.join(__dirname, '../client/public/')));
 app.use(express.static(path.join(__dirname, '../client/assets/')));
 app.use(express.urlencoded({ extended: true }));
+app.use(Cors());
 
 app.use(session({
     secret: 'secret value',
