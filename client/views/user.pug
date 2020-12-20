@@ -36,14 +36,8 @@ html(lang="en")
                         .user__header-description
                             span.user__header-name #{user.firstName} #{user.lastName}
                             .user__header-down-info
-                                if (user.industry)
-                                    small.user__header-industry #{user.industry}
-                                else
-                                    small.user__header-industry No industry
-                                if (user.city)
-                                    small.user__header-city &nbsp;#{user.city}
-                                else
-                                    small.user__header-city &nbsp;No city
+                                small.user__header-industry #{user.company}
+                                small.user__header-city &nbsp;#{user.city}
                                 small.user__header-followers &nbsp;#{user.followers} followers
                     if (user.website)
                         a(href="#{user.website}").user__header-visit-btn Visit website
@@ -54,13 +48,21 @@ html(lang="en")
 
                 .user__header-right
                     .user__header-right-top
-                        img(src="/images/done.png", alt="done")
-                        span.user__header-right-status Following
+                        //- img(src="/images/done.png", alt="done")
+                        //- span.user__header-right-status Following
                         img.user__header-right-settings(src="/images/user-settings.png", alt="settings")
-                    .user__header-right-industry
-                        span.user__header-right-industry-info John & 12 other connections work here
-                    .user__header-right-employees
-                        a(href="/") See all 79 employees on LinkedIn
+                        //- .user__header-right-industry
+                        //-     span.user__header-right-industry-info John & 12 other connections work here
+                        //- .user__header-right-employees
+                        //-     a(href="/") See all 79 employees on LinkedIn
+                        .user__header-settings.block-hidden
+                            .user__header-settings-title Change your description
+                            form.user__header-settings-form(action="/change/info/"+user._id method="POST")
+                                input(type="text" placeholder="Change your first name" name="firstName")
+                                input(type="text" placeholder="Change your last name" name="lastName")
+                                input(type="text" placeholder="Change your industry" name="industry")
+                                input(type="text" placeholder="Change your city" name="city")
+                                input(type="submit" value="Save")
 
         .user__down-info
             aside.user__sidebar

@@ -39,4 +39,27 @@ router.post('/change/picture/:id', async(req, res) => {
     res.redirect(`/profile/${user._id}`);
 });
 
+// change description for user page
+router.post('/change/info/:id', async(req, res) => {
+    const {firstName, lastName, industry, city} = await req.body;
+    const user = await User.findById(req.params.id);
+
+    await User.updateOne({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+        company: user.company,
+        city: user.city
+    },
+    {$set: {
+        firstName: firstName || user.firstName,
+        lastName: lastName || user.lastName,
+        company: industry || user.company,
+        city: city || user.city
+    }});
+
+    res.redirect('/profile/'+user._id);
+});
+
 module.exports = router;

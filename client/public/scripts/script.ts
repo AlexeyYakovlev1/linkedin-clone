@@ -7,16 +7,20 @@ const userHeaderBg: any = document.querySelector('.user__header-bg');
 const userChangeBg: any = document.querySelector('.user__change-bg');
 const userChangePicture: any = document.querySelector('.user__change-picture');
 const userHeaderPhoto: any = document.querySelector('.user__header-photo');
+const userHeaderRightSettings: any = document.querySelector('.user__header-right-settings');
+const userHeaderSettings: any = document.querySelector('.user__header-settings');
 
 headerMeJs.addEventListener('click', (): void => {
     headerLogout.classList.toggle('block-hidden');    
     headerMeImg.classList.toggle('rotate');
 });
 
-userHeaderBg.addEventListener('click', (): void => {
-    userChangeBg.classList.toggle('block-hidden');
-});
+function toggleClass(btn: any, block: any, hiddenClass: string): void {
+    btn.addEventListener('click', (): void => {
+        block.classList.toggle(hiddenClass);
+    });
+};
 
-userHeaderPhoto.addEventListener('click', (): void => {
-    userChangePicture.classList.toggle('block-hidden');
-});
+toggleClass(userHeaderBg, userChangeBg, 'block-hidden');
+toggleClass(userHeaderPhoto, userChangePicture, 'block-hidden');
+toggleClass(userHeaderRightSettings, userHeaderSettings, 'block-hidden');

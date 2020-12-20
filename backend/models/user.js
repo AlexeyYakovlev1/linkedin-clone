@@ -52,8 +52,14 @@ const userSchema = new Schema({
             img: String
         }]
     },
-    company: String,
-    city: String,
+    company: {
+        type: String,
+        default: 'No industry'
+    },
+    city: {
+        type: String,
+        default: 'No city'
+    },
     followers: {
         type: Number,
         default: 0
