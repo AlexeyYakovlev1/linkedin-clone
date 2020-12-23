@@ -33,14 +33,19 @@ toggleClass(userCreateNewBtn, userCreateNew, 'block-hidden');
 document.addEventListener('DOMContentLoaded', async() => {
     fetch('/profile/api/posts', {method:'GET'})
         .then((response): any => response.json())
-        .then((data): any => renderPosts(data));
+        // .then((data): any => renderPosts(data));
 });
 
-function renderPosts(data: any) {
-    data.map((item: any) => {
-        document.querySelector('.user__news-text').textContent = item.text;
-        const userNewsImage: HTMLElement = document.querySelector('.user__news-image');
-        userNewsImage.style.backgroundImage = `url(${item.img})`;
-        document.querySelector('.user__news-comments').textContent = item.comments;
-    });
-}
+// function renderPosts(data: any) {
+//     data.map((item: any) => {
+//         const post = item.posts;
+//         console.log(post);
+
+//         post.map(item => {
+//             document.querySelector('.user__news-text').textContent = item.text;
+//             const userNewsImage: HTMLElement = document.querySelector('.user__news-image');
+//             userNewsImage.style.backgroundImage = `url(${item.img})`;
+//             document.querySelector('.user__news-comments').textContent = item.comments;
+//         });
+//     });
+// };

@@ -14,7 +14,7 @@ const changeRoute = require('./routes/change.js');
 
 // app config
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const URL = 'mongodb+srv://alex:PQBH5UBQnZvANibR@cluster0.mlodm.mongodb.net/linkedin?retryWrites=true&w=majority';
 
 const store = new MongoStore({

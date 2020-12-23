@@ -17,17 +17,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    posts: [],
     background: String,
     photo: String,
-    posts: {
-        items: [{
-            count: {
-                type: Number,
-                required: true,
-                default: 1
-            }
-        }]
-    },
     company: {
         type: String,
         default: 'No industry'

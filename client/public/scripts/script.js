@@ -65,16 +65,7 @@ toggleClass(userCreateNewBtn, userCreateNew, 'block-hidden');
 document.addEventListener('DOMContentLoaded', function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         fetch('/profile/api/posts', { method: 'GET' })
-            .then(function (response) { return response.json(); })
-            .then(function (data) { return renderPosts(data); });
+            .then(function (response) { return response.json(); });
         return [2 /*return*/];
     });
 }); });
-function renderPosts(data) {
-    data.map(function (item) {
-        document.querySelector('.user__news-text').textContent = item.text;
-        var userNewsImage = document.querySelector('.user__news-image');
-        userNewsImage.style.backgroundImage = "url(" + item.img + ")";
-        document.querySelector('.user__news-comments').textContent = item.comments;
-    });
-}

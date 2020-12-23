@@ -102,60 +102,63 @@ html(lang="en")
                         input(type="submit" value="Posting")
 
                 ul.user__news-list
-                    li.user__news-new-item
-                        .user__news-header
-                            .user__news-user
-                                if (user.photo)
-                                    .user__news-photo(style="background-image: url("+user.photo+");")
-                                else
-                                    .user__news-photo(style="background-color: #0F1518;")
-                                .user__news-info
-                                    span.user__news-name
-                                        strong #{user.firstName} #{user.lastName}
-                                    span.user__news-followers #{user.followers === 0 ? "0" : user.followers} followers
-                                    .user__news-time
-                                        span 1w
-                                        img(src="/images/time.png", alt="time")
-                            img.user__news-setting-img(src="/images/user-settings.png", alt="settings")
+                    if (!user.posts.length)
+                        p No posts
+                    else
+                        each post in user.posts
+                            li.user__news-new-item
+                                .user__news-header
+                                    .user__news-user
+                                        if (user.photo)
+                                            .user__news-photo(style="background-image: url("+user.photo+");")
+                                        else
+                                            .user__news-photo(style="background-color: #0F1518;")
+                                        .user__news-info
+                                            span.user__news-name
+                                                strong #{user.firstName} #{user.lastName}
+                                            span.user__news-followers #{user.followers === 0 ? "0" : user.followers} followers
+                                            .user__news-time
+                                                span 1w
+                                                img(src="/images/time.png", alt="time")
+                                    img.user__news-setting-img(src="/images/user-settings.png", alt="settings")
 
-                        p.user__news-text.
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when.
+                                p.user__news-text #{post.text}
 
-                        a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank") https://bit.ly/2RANHvl
+                                a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank")
 
-                        .user__news-image
-                        strong.user__news-additional-text Lorem ipsum
+                                .user__news-image(style="background-image: url("+post.img+");")
+                                strong.user__news-additional-text
 
-                        .user__news-appreciat
-                            .user__news-appreciat-wrapper
-                                ul.user__news-appreciat-list
-                                    li
-                                        img(src="/images/smile-2.png", alt="")
-                                    li
-                                        img(src="/images/smile-4.png", alt="")
-                                    li
-                                        img(src="/images/smile-3.png", alt="")
-                                    li
-                                        img(src="/images/smile-5.png", alt="")
-                                    li
-                                        img(src="/images/smile-1.png", alt="")
+                                .user__news-appreciat
+                                    .user__news-appreciat-wrapper
+                                        ul.user__news-appreciat-list
+                                            li
+                                                img(src="/images/smile-2.png", alt="")
+                                            li
+                                                img(src="/images/smile-4.png", alt="")
+                                            li
+                                                img(src="/images/smile-3.png", alt="")
+                                            li
+                                                img(src="/images/smile-5.png", alt="")
+                                            li
+                                                img(src="/images/smile-1.png", alt="")
 
-                                span.user__news-num-smiles 153
-                                span.user__news-comments 57 comments
+                                        span.user__news-num-smiles
+                                        span.user__news-comments
 
-                            span.user__news-border
+                                    span.user__news-border
 
-                        ul.user__news-move-list
-                            li.user__news-like
-                                img(src="/images/like.png", alt="like")
-                                span Like
-                            li.user__news-comment
-                                img(src="/images/comment.png", alt="comment")
-                                span Comment
-                            li.user__news-share
-                                img(src="/images/share.png", alt="share")
-                                span Share
+                                ul.user__news-move-list
+                                    li.user__news-like
+                                        img(src="/images/like.png", alt="like")
+                                        span Like
+                                    li.user__news-comment
+                                        img(src="/images/comment.png", alt="comment")
+                                        span Comment
+                                    li.user__news-share
+                                        img(src="/images/share.png", alt="share")
+                                        span Share
+                    
 
             .user__more
                 ul.user__more-ad-list
