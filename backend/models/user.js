@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const { idText } = require('typescript');
 
 const userSchema = new Schema({
     firstName: {
@@ -17,7 +18,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    posts: [],
+    posts: [{
+        text: String,
+        img: String,
+        link: String,
+        time: Date
+    }],
     background: String,
     photo: String,
     company: {

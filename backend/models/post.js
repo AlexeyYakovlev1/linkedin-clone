@@ -1,17 +1,12 @@
 const {Schema, model} = require('mongoose');
 
 const postSchema = new Schema({
-    time: {
-        type: Date,
-        rel: new Date().setUTCDate
-    },
+    time: Date,
     text: {
         type: String,
-        required: true
     },
-    img: {
-        type: String
-    },
+    link: String,
+    img: String,
     likes: {
         type: Number,
         required: true,

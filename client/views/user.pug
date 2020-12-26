@@ -48,13 +48,10 @@ html(lang="en")
 
                 .user__header-right
                     .user__header-right-top
-                        //- img(src="/images/done.png", alt="done")
-                        //- span.user__header-right-status Following
+                        if (notUser)
+                            img(src="/images/done.png", alt="done")
+                            span.user__header-right-status Following
                         img.user__header-right-settings(src="/images/user-settings.png", alt="settings")
-                        //- .user__header-right-industry
-                        //-     span.user__header-right-industry-info John & 12 other connections work here
-                        //- .user__header-right-employees
-                        //-     a(href="/") See all 79 employees on LinkedIn
                         .user__header-settings.block-hidden
                             .user__header-settings-title Change your description
                             form.user__header-settings-form(action="/change/info/"+user._id method="POST")
@@ -97,15 +94,16 @@ html(lang="en")
                     button.user-create-new-btn Create new post
 
                     form.user__create-new.block-hidden(action="/profile/add/post/"+user._id method="POST")
-                        textarea(name="text", cols="76", rows="10" placeholder="Description this post")
-                        input(type="text" name="img" placeholder="URL your picture")
+                        textarea(name="text", cols="76", rows="10" placeholder="Description for this post")
+                        input(type="text" name="link" placeholder="Link for this post")
+                        input(type="text" name="img" placeholder="URL your picture" style="margin-top: 4px;")
                         input(type="submit" value="Posting")
 
                 ul.user__news-list
                     if (!user.posts.length)
-                        p No posts
+                        p.user__news-no No posts
                     else
-                        each post in user.posts
+                        each user_post in user_posts
                             li.user__news-new-item
                                 .user__news-header
                                     .user__news-user
@@ -117,16 +115,48 @@ html(lang="en")
                                             span.user__news-name
                                                 strong #{user.firstName} #{user.lastName}
                                             span.user__news-followers #{user.followers === 0 ? "0" : user.followers} followers
+                                            
                                             .user__news-time
-                                                span 1w
+                                                if (user_post.time.getDay() < 10)
+                                                    span 0#{user_post.time.getDay()}.
+                                                else 
+                                                    span #{user_post.time.getDay()}.
+                                                
+                                                span
+                                                    if (user_post.time.getMonth()+1 < 10)
+                                                        span 0#{user_post.time.getMonth()+1}.
+                                                    else 
+                                                        span #{user_post.time.getMonth()+1}.
+
+                                                    span.user__news-time-info #{user_post.time.getFullYear()}
+
+                                                    span &nbsp;#{user_post.time.getHours()}:
+                                                        if (user_post.time.getMinutes() < 10)
+                                                            span 0#{user_post.time.getMinutes()}
+                                                        else
+                                                            span #{user_post.time.getMinutes()}
+
                                                 img(src="/images/time.png", alt="time")
-                                    img.user__news-setting-img(src="/images/user-settings.png", alt="settings")
+                                    img.user__news-setting-img(
+                                        class=""+user_post._id.toString().split('')[23]
+                                        src="/images/user-settings.png", 
+                                        alt="settings"
+                                    )
+                                    form.user__news-setting-remove-form.block-hidden(
+                                        action="/profile/"+user._id+"/remove-post/"+user_post._id 
+                                        method="POST"
+                                        data-delete=""+user_post._id.toString().split('')[23]
+                                    )
+                                        input(type="hidden" name="id_user_post" value= user_post._id)
+                                        input(type="submit" value="Delete this post?")
 
-                                p.user__news-text #{post.text}
+                                p.user__news-text #{user_post.text}
 
-                                a.user__news-link(href="/https://bit.ly/2RANHvl" target="_blank")
+                                if (user_post.link)
+                                    a.user__news-link(href= user_post.link target="_blank") #{user_post.link}
 
-                                .user__news-image(style="background-image: url("+post.img+");")
+                                if (user_post.img)
+                                    .user__news-image(style="background-image: url("+user_post.img+");")
                                 strong.user__news-additional-text
 
                                 .user__news-appreciat
@@ -191,41 +221,6 @@ html(lang="en")
                         span.user__more-similar-title Similar pages
 
                         ul.user__more-similar-pages-list
-                            li
-                                a.user__more-similar-link-item(href="/")
-                                    .user__more-similar-img
-                                    .user__more-similar-info
-                                        .user__more-similar-description
-                                            span.user__more-similar-name
-                                                strong Name
-                                            span.user__more-similar-industry Industry
-                                    a.user__more-similar-follow-btn(href="/")
-                                        img(src="/images/add.png", alt="add")
-                                        span Follow
-
-                            li
-                                a.user__more-similar-link-item(href="/")
-                                    .user__more-similar-img
-                                    .user__more-similar-info
-                                        .user__more-similar-description
-                                            span.user__more-similar-name
-                                                strong Name
-                                            span.user__more-similar-industry Industry
-                                    a.user__more-similar-follow-btn(href="/")
-                                        img(src="/images/add.png", alt="add")
-                                        span Follow
-
-                            li
-                                a.user__more-similar-link-item(href="/")
-                                    .user__more-similar-img
-                                    .user__more-similar-info
-                                        .user__more-similar-description
-                                            span.user__more-similar-name
-                                                strong Name
-                                            span.user__more-similar-industry Industry
-                                    a.user__more-similar-follow-btn(href="/")
-                                        img(src="/images/add.png", alt="add")
-                                        span Follow
 
                         button.user__more-similar-show-btn
                             a(href="/") Show more

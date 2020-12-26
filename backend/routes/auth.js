@@ -11,7 +11,7 @@ router.get('/signup', (req, res) => {
 });
 
 // logout
-router.get('/auth/logout', async(req, res) => {
+router.get('/auth/logout', (req, res) => {
     req.session.destroy(() => {
         res.redirect('/');
     });
@@ -63,7 +63,7 @@ router.post('/auth/login', async(req, res) => {
             } else {
                 req.session.user = userFind;
                 req.session.auth = true;
-                await req.session.save(err => {
+                await req.session.save(async(err) => {
                     if (err) {
                         throw err;
                     }

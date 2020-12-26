@@ -29,6 +29,7 @@ app.set('views', path.join(__dirname, '../client/views'));
 app.use(express.static(path.join(__dirname, '../client/views')));
 app.use(express.static(path.join(__dirname, '../client/public/')));
 app.use(express.static(path.join(__dirname, '../client/assets/')));
+app.use(express.static(path.join(__dirname, '../../node_modules/')));
 app.use(express.urlencoded({ extended: true }));
 app.use(Cors());
 

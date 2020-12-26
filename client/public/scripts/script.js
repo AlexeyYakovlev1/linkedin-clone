@@ -47,6 +47,22 @@ var userHeaderRightSettings = document.querySelector('.user__header-right-settin
 var userHeaderSettings = document.querySelector('.user__header-settings');
 var userCreateNewBtn = document.querySelector('.user-create-new-btn');
 var userCreateNew = document.querySelector('.user__create-new');
+var userNewsSettingImg = document.querySelectorAll('.user__news-setting-img');
+var userNewsSettingRemoveForm = document.querySelectorAll('.user__news-setting-remove-form');
+var userMoreSimilarPagesList = document.querySelector('.user__more-similar-pages-list');
+if (userNewsSettingImg && userNewsSettingRemoveForm) {
+    userNewsSettingImg.forEach(function (img) {
+        img.addEventListener('click', function (event) {
+            var classImg = event.target.classList;
+            userNewsSettingRemoveForm.forEach(function (form) {
+                var dataForm = form.dataset["delete"];
+                if (classImg.contains(dataForm)) {
+                    form.classList.toggle('block-hidden');
+                }
+            });
+        });
+    });
+}
 headerMeJs.addEventListener('click', function () {
     headerLogout.classList.toggle('block-hidden');
     headerMeImg.classList.toggle('rotate');
@@ -66,6 +82,14 @@ document.addEventListener('DOMContentLoaded', function () { return __awaiter(voi
     return __generator(this, function (_a) {
         fetch('/profile/api/posts', { method: 'GET' })
             .then(function (response) { return response.json(); });
+        fetch('/profile/api/profiles', { method: 'GET' })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            data.map(function (item) {
+                var similarHtml = "\n                    <li>\n                        <a class=\"user__more-similar-link-item\" href=\"/profile/some/" + item._id + "\">\n                            <div class=\"user__more-similar-right\">\n                                <div class=\"user__more-similar-img\" style=\"background-image: url(" + item.photo + ")\"></div>\n                                <div class=\"user__more-similar-info\">\n                                    <div class=\"user__more-similar-description\">\n                                        <span class=\"user__more-similar-name\">\n                                            <strong>" + item.firstName + "</strong>\n                                        </span>\n                                        <span class=\"user__more-similar-industry\">" + item.company + "</span>\n                                    </div>\n                                </div>\n                            </div>\n                            <form class=\"user__more-similar-follow-btn\" action=\"/profile/following/:id\">\n                                <img src=\"/images/add.png\", alt=\"add\" />\n                                <input class=\"user__more-similar-follow-btn\" type=\"submit\" value=\"Follow\"/>\n                            </form>\n                        </a>\n                    </li>\n                ";
+                userMoreSimilarPagesList.innerHTML += similarHtml;
+            });
+        });
         return [2 /*return*/];
     });
 }); });
