@@ -51,15 +51,16 @@ html(lang="en")
                         if (notUser)
                             img(src="/images/done.png", alt="done")
                             span.user__header-right-status Following
-                        img.user__header-right-settings(src="/images/user-settings.png", alt="settings")
-                        .user__header-settings.block-hidden
-                            .user__header-settings-title Change your description
-                            form.user__header-settings-form(action="/change/info/"+user._id method="POST")
-                                input(type="text" placeholder="Change your first name" name="firstName")
-                                input(type="text" placeholder="Change your last name" name="lastName")
-                                input(type="text" placeholder="Change your industry" name="industry")
-                                input(type="text" placeholder="Change your city" name="city")
-                                input(type="submit" value="Save")
+                        else
+                            img.user__header-right-settings(src="/images/user-settings.png", alt="settings")
+                            .user__header-settings.block-hidden
+                                .user__header-settings-title Change your description
+                                form.user__header-settings-form(action="/change/info/"+user._id method="POST")
+                                    input(type="text" placeholder="Change your first name" name="firstName")
+                                    input(type="text" placeholder="Change your last name" name="lastName")
+                                    input(type="text" placeholder="Change your industry" name="industry")
+                                    input(type="text" placeholder="Change your city" name="city")
+                                    input(type="submit" value="Save")
 
         .user__down-info
             aside.user__sidebar
@@ -90,14 +91,15 @@ html(lang="en")
                             option(value="top") Top
                             option(value="down") Down
 
-                .user__news-create-new
-                    button.user-create-new-btn Create new post
+                if (!notUser)
+                    .user__news-create-new
+                        button.user-create-new-btn Create new post
 
-                    form.user__create-new.block-hidden(action="/profile/add/post/"+user._id method="POST")
-                        textarea(name="text", cols="76", rows="10" placeholder="Description for this post")
-                        input(type="text" name="link" placeholder="Link for this post")
-                        input(type="text" name="img" placeholder="URL your picture" style="margin-top: 4px;")
-                        input(type="submit" value="Posting")
+                        form.user__create-new.block-hidden(action="/profile/add/post/"+user._id method="POST")
+                            textarea(name="text", cols="76", rows="10" placeholder="Description for this post" required)
+                            input(type="text" name="link" placeholder="Link for this post")
+                            input(type="text" name="img" placeholder="URL your picture" style="margin-top: 4px;")
+                            input(type="submit" value="Posting")
 
                 ul.user__news-list
                     if (!user.posts.length)

@@ -111,10 +111,9 @@ router.get('/api/profiles', (req, res) => {
             if (err) {
                 res.status(400).send(err);
             } else {
-                const users = await data.filter(item => item._id !== req.user._id);
-
-                // users.map(item => console.log(item._id+"\n"))
-                // console.log(req.user._id);
+                const users = await data.filter(item => {
+                    return item._id.toString() !== req.user._id.toString();
+                });
 
                 res.status(200).send(users);
             }
