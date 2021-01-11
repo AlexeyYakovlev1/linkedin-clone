@@ -1,5 +1,7 @@
 'use strict';
 
+import '../styles/login.css';
+
 // variables
 const headerMeJs: HTMLElement = document.querySelector('.header-me-js');
 const headerLogout: HTMLElement = document.querySelector('.header-logout');

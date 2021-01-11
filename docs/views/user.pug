@@ -17,10 +17,11 @@ html(lang="en")
                 .user__header-bg(style="background-image: url("+user.background+");")
             else
                 .user__header-bg(style="background-color: #0F1518;")
-            form.user__change-bg.block-hidden(action="/change/bg/"+user._id method="POST")
-                label(for="background") Change background picture
-                input(type="text" name="backgroundUrl" placeholder="Write url picture")
-                input.user__change-submit(type="submit" value="Save")
+            if (!notUser)
+                form.user__change-bg.block-hidden(action="/change/bg/"+user._id method="POST")
+                    label(for="background") Change background picture
+                    input(type="text" name="backgroundUrl" placeholder="Write url picture")
+                    input.user__change-submit(type="submit" value="Save")
 
             .user__header-info
                 .user__header-left
@@ -29,10 +30,11 @@ html(lang="en")
                             .user__header-photo(style="background-image: url("+user.photo+");")
                         else
                             .user__header-photo(style="background-color: #0F1518;")
-                        form.user__change-picture.block-hidden(action="/change/picture/"+user._id method="POST")
-                            label(for="picture") Change picture
-                            input(type="text" name="pictureUrl" placeholder="Write url picture")
-                            input.user__change-submit(type="submit" value="Save")
+                        if (!notUser)
+                            form.user__change-picture.block-hidden(action="/change/picture/"+user._id method="POST")
+                                label(for="picture") Change picture
+                                input(type="text" name="pictureUrl" placeholder="Write url picture")
+                                input.user__change-submit(type="submit" value="Save")
                         .user__header-description
                             span.user__header-name #{user.firstName} #{user.lastName}
                             .user__header-down-info
@@ -218,6 +220,7 @@ html(lang="en")
 
                             button.user__more-ad-follow-btn
                                 a(href="/") Follow
+                                
                 ul.user__more-similar-list  
                     li.user__more-similar-item
                         span.user__more-similar-title Similar pages

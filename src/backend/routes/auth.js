@@ -6,7 +6,9 @@ const User = require('../models/user.js');
 // page
 router.get('/signup', (req, res) => {
     res.render('signup', {
-        title: 'Linkedin signup'
+        title: 'Linkedin signup',
+        loginError: req.flash('loginError'),
+        registerError: req.flash('registerError')
     });
 });
 
@@ -24,7 +26,8 @@ router.post('/auth/register', async(req, res) => {
         const userFind = await User.findOne({email});
 
         if (userFind) {
-            console.log('Такой пользователь уже существует');
+            req.flash('registerError', 'Такой пользователь уже существует.')
+            res.redirect('/signup');
         } else {
             const hashPassword = await bcrypt.hash(password, 8);
 
@@ -37,7 +40,6 @@ router.post('/auth/register', async(req, res) => {
 
             await newUser.save();
 
-            console.log('Пользователь успешно создан');
             res.redirect('/');
         }
 
@@ -53,12 +55,13 @@ router.post('/auth/login', async(req, res) => {
         const userFind = await User.findOne({email});
 
         if (!userFind) {
-            console.log('Такого пользователя не существует');
+            req.flash('loginError', 'Такого пользователя не существует.')
+            res.redirect('/');
         } else {
             const comparePassword = await bcrypt.compare(password, userFind.password);
 
             if (!comparePassword) {
-                console.log('Данные не верны!');
+                req.flash('loginError', 'Данные неверны.')
                 res.redirect('/');
             } else {
                 req.session.user = userFind;
@@ -70,8 +73,6 @@ router.post('/auth/login', async(req, res) => {
 
                     res.redirect(`/profile/${userFind._id}`);
                 });
-
-                console.log(`Добро пожаловать, ${userFind.firstName}!`);
             }
         }
     

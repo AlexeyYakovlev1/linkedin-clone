@@ -11,6 +11,7 @@ const homeRoute = require('./routes/home.js');
 const signupRoute = require('./routes/auth.js');
 const profileRoute = require('./routes/profile.js');
 const changeRoute = require('./routes/change.js');
+const flash = require('connect-flash');
 
 // app config
 const app = express();
@@ -24,14 +25,12 @@ const store = new MongoStore({
 
 // middlewares
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../client/views'));
+app.set('views', path.join(__dirname, '../../build/views'));
 
-app.use(express.static(path.join(__dirname, '../client/views')));
-app.use(express.static(path.join(__dirname, '../client/public/')));
-app.use(express.static(path.join(__dirname, '../client/assets/')));
-app.use(express.static(path.join(__dirname, '../../node_modules/')));
+app.use(express.static(path.join(__dirname, '../../build/views')));
+app.use(express.static(path.join(__dirname, '../../build/public/')));
+app.use(express.static(path.join(__dirname, '../../build/assets/')));
 app.use(express.urlencoded({ extended: true }));
-app.use(Cors());
 
 app.use(session({
     secret: 'secret value',
@@ -40,6 +39,8 @@ app.use(session({
     store
 }));
 
+app.use(Cors());
+app.use(flash());
 app.use(varMiddleware);
 app.use(userMiddleware);
 

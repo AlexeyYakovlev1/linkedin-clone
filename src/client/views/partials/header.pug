@@ -1,0 +1,54 @@
+header.header
+    .header__wrapper.container
+        .header__left
+            a.header__block-logo(href="")
+                img.header-logo(src="/images/logo.png", alt="logo")
+            
+            .header__block-search
+                input.header-search(type="text" placeholder="Search")
+        
+        nav.header__menu
+            ul.header__menu-list
+                li
+                    a(href="/")
+                        img.header__menu-item-img(src="/images/home.png", alt="home")
+                        span Home
+                li
+                    a(href="/network")
+                        .header__block-messages 
+                            span.header-messages 19
+                            img.header__menu-item-img(src="/images/network.png", alt="network")
+                        span(style="width: 64px;") My Network
+                li
+                    a(href="/jobs")
+                        img.header__menu-item-img(src="/images/jobs.png", alt="jobs")
+                        span Jobs
+                li
+                    a(href="/messages")
+                        .header__block-messages 
+                            span.header-messages 19
+                            img.header__menu-item-img(src="/images/messages.png", alt="messages")
+                        span Messaging
+                li
+                    a(href="/notifications")
+                        .header__block-messages 
+                            span.header-messages 19
+                            img.header__menu-item-img(src="/images/notifications.png", alt="notifications")
+                        span Notifications
+                li.header-me-js
+                    if (user.photo)
+                        .header-user-photo(style="background-image: url("+user.photo+");")
+                    else
+                        .header-user-photo(style="background-color: #0F1518;")
+                    span.img Me
+                        img.header-me-img(src="/images/check.png", alt="check")
+
+                    a.header-logout.block-hidden(href="/auth/logout") Logout
+
+        .header__right
+            .header__right-work
+                img(src="/images/work.png", alt="work")
+                span Work
+                    img(src="/images/check.png", alt="check")
+            
+            a.header__right-notification-info(href="/") Try Premium Free for 1 Month
