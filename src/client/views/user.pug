@@ -141,18 +141,19 @@ html(lang="en")
                                                             span #{user_post.time.getMinutes()}
 
                                                 img(src="/images/time.png", alt="time")
-                                    img.user__news-setting-img(
-                                        class=""+user_post._id.toString().split('')[23]
-                                        src="/images/user-settings.png", 
-                                        alt="settings"
-                                    )
-                                    form.user__news-setting-remove-form.block-hidden(
-                                        action="/profile/"+user._id+"/remove-post/"+user_post._id 
-                                        method="POST"
-                                        data-delete=""+user_post._id.toString().split('')[23]
-                                    )
-                                        input(type="hidden" name="id_user_post" value= user_post._id)
-                                        input(type="submit" value="Delete this post?")
+                                    if (!notUser)
+                                        img.user__news-setting-img(
+                                            class=""+user_post._id.toString().split('')[23]
+                                            src="/images/user-settings.png", 
+                                            alt="settings"
+                                        )
+                                        form.user__news-setting-remove-form.block-hidden(
+                                            action="/profile/"+user._id+"/remove-post/"+user_post._id 
+                                            method="POST"
+                                            data-delete=""+user_post._id.toString().split('')[23]
+                                        )
+                                            input(type="hidden" name="id_user_post" value= user_post._id)
+                                            input(type="submit" value="Delete this post?")
 
                                 p.user__news-text #{user_post.text}
 

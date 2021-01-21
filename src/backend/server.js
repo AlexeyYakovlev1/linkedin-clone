@@ -25,11 +25,15 @@ const store = new MongoStore({
 
 // middlewares
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../../build/views'));
+// app.set('views', path.join(__dirname, '../../build/views'));
+app.set('views', path.join(__dirname, '../client/views'));
 
-app.use(express.static(path.join(__dirname, '../../build/views')));
-app.use(express.static(path.join(__dirname, '../../build/public/')));
-app.use(express.static(path.join(__dirname, '../../build/assets/')));
+// app.use(express.static(path.join(__dirname, '../../build/views')));
+// app.use(express.static(path.join(__dirname, '../../build/public/')));
+// app.use(express.static(path.join(__dirname, '../../build/assets/')));
+app.use(express.static(path.join(__dirname, '../client/views')));
+app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/assets')));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({

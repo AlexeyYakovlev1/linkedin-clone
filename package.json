@@ -9,6 +9,7 @@
     },
     "author": "Alexey Yakovlev <alexeyykovlev555@gmail.com>",
     "license": "ISC",
+    "homepage": "https://alexeyyakovlev1.github.io/linkedin-clone/",
     "dependencies": {
         "@babel/core": "^7.12.10",
         "babel-loader": "^8.2.2",

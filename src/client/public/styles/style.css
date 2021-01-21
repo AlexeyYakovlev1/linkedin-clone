@@ -54,7 +54,7 @@ a {
       content: "";
       width: 11px;
       height: 10px;
-      background-image: url(~img/circle.png);
+      background-image: url(../images/circle.png);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -65,7 +65,7 @@ a {
       content: "";
       width: 3.5px;
       height: 5.5px;
-      background-image: url(~img/stick.png);
+      background-image: url(../images/stick.png);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -783,3 +783,129 @@ a {
       align-items: center; }
       .user__news-move-list li span {
         padding-left: 6px; }
+
+@media screen and (max-width: 1148px) {
+  .container {
+    max-width: 1050px;
+  }
+
+  .header__right-notification-info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    max-width: 950px;
+  }
+
+  .header__menu {
+    margin-left: 78px;
+  }
+
+  .user__more {
+    width: 240px;
+  }
+
+  .user__news {
+    margin: 0;
+    width: 460px;
+  }
+
+  .user__more-similar-item {
+    width: 100%;
+  }
+
+  .user__more-similar-link-item {
+    width: 210px !important;
+  }
+
+  .user__more-similar-follow-btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 962px) {
+  .container {
+    max-width: 850px;
+  }
+
+  .header__menu {
+    margin-left: 25px;
+  }
+
+  .header__right {
+    display: none;
+  }
+
+  .user__sidebar {
+    display: none;
+  }
+
+  .user__news {
+    margin: 0 auto;
+    margin-right: 25px;
+  }
+}
+
+@media screen and (max-width: 864px) {
+  .container {
+    max-width: 750px;
+  }
+
+  .header-search {
+    width: 215px;
+  }
+
+  .user__news {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .container {
+    max-width: 650px;
+  }
+
+  .header__menu {
+    margin: 0;
+  }
+
+  .header__menu-list li:first-child {
+    display: none;
+  }
+
+  .header__menu-list li:nth-child(3) {
+    display: none;
+  }
+
+  .user__more {
+    display: none;
+  }
+
+  .user__news {
+    width: 100%;
+  }
+
+  .user__news-list li {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 652px) {
+  .container {
+    max-width: 550px;
+  }
+
+  .header__left {
+    display: none;
+  }
+
+  .header__menu {
+    margin: 0 auto;
+  }
+
+  .header__menu-list li {
+    display: block !important;
+  }
+}
